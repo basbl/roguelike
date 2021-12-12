@@ -15,8 +15,8 @@ mod prelude {
     pub use legion::*;
     pub const SCREEN_WIDTH: i32 = 80;
     pub const SCREEN_HEIGHT: i32 = 50;
-    pub const DISPLAY_WIDTH: i32 = SCREEN_WIDTH / 2;
-    pub const DISPLAY_HEIGHT: i32 = SCREEN_HEIGHT / 2;
+    pub const DISPLAY_WIDTH: i32 = SCREEN_WIDTH / 4;
+    pub const DISPLAY_HEIGHT: i32 = SCREEN_HEIGHT / 4;
     pub use crate::camera::*;
     pub use crate::components::*;
     pub use crate::map::*;
@@ -98,8 +98,9 @@ fn main() -> BError {
     let context = BTermBuilder::new()
         .with_title("Roguelike")
         .with_fps_cap(60.0)
+        .with_vsync(true)
         .with_dimensions(DISPLAY_WIDTH, DISPLAY_HEIGHT)
-        .with_tile_dimensions(32, 32)
+        .with_tile_dimensions(64, 64)
         .with_resource_path("resources/")
         .with_font("dungeonfont.png", 32, 32)
         .with_simple_console(DISPLAY_WIDTH, DISPLAY_HEIGHT, "dungeonfont.png")
